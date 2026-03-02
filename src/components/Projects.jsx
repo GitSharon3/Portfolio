@@ -29,12 +29,19 @@ const Projects = () => {
   const [activeProjectId, setActiveProjectId] = useState(filteredProjects[0]?.id)
   const projectIds = useMemo(() => filteredProjects.map((p) => p.id), [filteredProjects])
   const [proximity, setProximity] = useState({})
+  const [carouselReady, setCarouselReady] = useState(false)
 
   const variantForProject = (p) => (p.type === 'mobile' ? 'mobile' : 'web')
 
   useEffect(() => {
     setActiveProjectId(filteredProjects[0]?.id)
-    if (scrollerRef.current) scrollerRef.current.scrollLeft = 0
+    const scroller = scrollerRef.current
+    if (!scroller) return
+    setCarouselReady(false)
+
+    requestAnimationFrame(() => {
+      scroller.scrollTo({ left: 0, behavior: 'auto' })
+    })
   }, [activeFilter])
 
   useEffect(() => {
@@ -45,8 +52,8 @@ const Projects = () => {
 
     const compute = () => {
       rafId = null
-      const rect = scroller.getBoundingClientRect()
-      const centerX = rect.left + rect.width / 2
+
+      const centerX = scroller.scrollLeft + scroller.clientWidth / 2
       const next = {}
 
       let bestId = activeProjectId
@@ -57,10 +64,9 @@ const Projects = () => {
         const id = Number(child.getAttribute('data-project-id'))
         if (Number.isNaN(id)) continue
 
-        const cr = child.getBoundingClientRect()
-        const childCenter = cr.left + cr.width / 2
+        const childCenter = child.offsetLeft + child.offsetWidth / 2
         const dist = Math.abs(childCenter - centerX)
-        const max = rect.width * 0.55
+        const max = scroller.clientWidth * 0.6
         const t = Math.max(0, 1 - dist / max)
         next[id] = t
 
@@ -71,6 +77,7 @@ const Projects = () => {
       }
 
       setProximity(next)
+      setCarouselReady((prev) => (prev ? prev : true))
 
       if (bestId != null && bestId !== activeProjectId) {
         setActiveProjectId(bestId)
@@ -156,10 +163,11 @@ const Projects = () => {
                 className="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[56%] lg:w-[44%] xl:w-[38%]"
                 style={{
                   transformOrigin: 'center center',
-                  transform: `scale(${0.92 + (proximity[project.id] ?? 0) * 0.10})`,
-                  opacity: 0.65 + (proximity[project.id] ?? 0) * 0.35,
-                  filter: `blur(${(1 - (proximity[project.id] ?? 0)) * 1.25}px)`,
-                  transition: 'transform 220ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms cubic-bezier(0.22, 1, 0.36, 1), filter 220ms cubic-bezier(0.22, 1, 0.36, 1)'
+                  transform: `translateY(${(1 - (proximity[project.id] ?? 0)) * 10}px) scale(${0.92 + (proximity[project.id] ?? 0) * 0.10})`,
+                  opacity: 0.72 + (proximity[project.id] ?? 0) * 0.28,
+                  transition: carouselReady
+                    ? 'transform 220ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms cubic-bezier(0.22, 1, 0.36, 1)'
+                    : 'none'
                 }}
               >
                 <ProjectCard

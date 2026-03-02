@@ -181,7 +181,7 @@ const Skills = () => {
 
             <div
               className="marquee-track gap-4 sm:gap-5 py-5 px-3 sm:px-4 group-hover:[animation-play-state:paused]"
-              style={{ ['--marquee-duration']: '44s' }}
+              style={{ ['--marquee-duration']: '80s' }}
             >
               {techMarquee.map((tech, index) => (
                 <a
