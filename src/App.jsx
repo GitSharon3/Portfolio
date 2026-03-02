@@ -13,7 +13,7 @@ import ParticleBackground from './components/ParticleBackground'
 function App() {
   // Render the main application layout
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-slate-950">
       {/* Animated particle background */}
       <ParticleBackground />
       {/* Fixed navigation header */}
@@ -23,10 +23,10 @@ function App() {
         <Hero />
         {/* About me section */}
         <About />
-        {/* Work experience */}
-        <Experience />
         {/* Skills showcase */}
         <Skills />
+        {/* Work experience */}
+        <Experience />
         {/* Projects gallery */}
         <Projects />
         {/* Contact information */}

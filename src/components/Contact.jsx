@@ -58,7 +58,7 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-white">
+    <section id="contact" className="py-20 md:py-32 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -68,9 +68,9 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <span className="text-primary-400 font-medium">Get In Touch</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">Contact Me</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 text-slate-900 dark:text-white">Contact Me</h2>
           <div className="w-20 h-1 bg-primary-500 mx-auto mt-4 rounded-full" />
-          <p className="text-slate-600 mt-4 max-w-2xl mx-auto">
+          <p className="text-slate-600 dark:text-slate-300 mt-4 max-w-2xl mx-auto">
             Have a project in mind or want to collaborate? Feel free to reach out!
           </p>
         </motion.div>
@@ -81,8 +81,8 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold mb-6">Let's Talk</h3>
-            <p className="text-slate-600 mb-8">
+            <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Let's Talk</h3>
+            <p className="text-slate-600 dark:text-slate-300 mb-8">
               I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
 
@@ -94,14 +94,14 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                  className="flex items-center gap-4 p-4 bg-white/50 rounded-xl border border-slate-100 hover:border-primary-500/50 transition-all duration-300"
+                  className="flex items-center gap-4 p-4 bg-white/50 dark:bg-slate-950/40 rounded-xl border border-slate-100 dark:border-white/10 hover:border-primary-500/50 dark:hover:border-white/20 transition-all duration-300"
                 >
                   <div className="w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center">
                     <item.icon className="w-5 h-5 text-primary-400" />
                   </div>
                   <div>
-                    <p className="text-sm text-slate-600">{item.label}</p>
-                    <p className="font-medium text-slate-900">{item.value}</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-300">{item.label}</p>
+                    <p className="font-medium text-slate-900 dark:text-white">{item.value}</p>
                   </div>
                 </motion.a>
               ))}
@@ -117,7 +117,7 @@ const Contact = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
-                  className="w-12 h-12 bg-white hover:bg-primary-600 rounded-lg flex items-center justify-center text-slate-600 hover:text-slate-900 transition-all duration-300"
+                  className="w-12 h-12 bg-white dark:bg-slate-900/60 hover:bg-primary-600 rounded-lg flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" />
@@ -131,9 +131,9 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <form onSubmit={handleSubmit} className="bg-white/50 p-8 rounded-2xl border border-slate-100">
+            <form onSubmit={handleSubmit} className="bg-white/50 dark:bg-slate-950/40 p-8 rounded-2xl border border-slate-100 dark:border-white/10">
               <div className="mb-6">
-                <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                   Your Name
                 </label>
                 <input
@@ -142,7 +142,7 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-white border rounded-lg text-slate-900 placeholder-gray-500 focus:outline-none focus:border-primary-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3 bg-white dark:bg-slate-950 border rounded-lg text-slate-900 dark:text-white placeholder-gray-500 dark:placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors duration-300 ${
                     errors.name ? 'border-red-500' : 'border-slate-300'
                   }`}
                   placeholder="John Doe"
@@ -151,7 +151,7 @@ const Contact = () => {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                   Email Address
                 </label>
                 <input
@@ -160,7 +160,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-white border rounded-lg text-slate-900 placeholder-gray-500 focus:outline-none focus:border-primary-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3 bg-white dark:bg-slate-950 border rounded-lg text-slate-900 dark:text-white placeholder-gray-500 dark:placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors duration-300 ${
                     errors.email ? 'border-red-500' : 'border-slate-300'
                   }`}
                   placeholder="john@example.com"
@@ -169,7 +169,7 @@ const Contact = () => {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                   Message
                 </label>
                 <textarea
@@ -178,7 +178,7 @@ const Contact = () => {
                   rows="5"
                   value={formData.message}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-white border rounded-lg text-slate-900 placeholder-gray-500 focus:outline-none focus:border-primary-500 transition-colors duration-300 resize-none ${
+                  className={`w-full px-4 py-3 bg-white dark:bg-slate-950 border rounded-lg text-slate-900 dark:text-white placeholder-gray-500 dark:placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors duration-300 resize-none ${
                     errors.message ? 'border-red-500' : 'border-slate-300'
                   }`}
                   placeholder="Tell me about your project..."

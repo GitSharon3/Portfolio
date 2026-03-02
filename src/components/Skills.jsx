@@ -151,8 +151,10 @@ const Skills = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
+  const techMarquee = [...techStack, ...techStack]
+
   return (
-    <section id="skills" className="py-20 md:py-32 bg-white">
+    <section id="skills" className="py-20 md:py-32 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Technical Skills Section */}
@@ -163,35 +165,43 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold">Technical Skills</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Technical Skills</h2>
           <div className="w-24 h-1 bg-primary-500 mx-auto mt-4 rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4 mb-20">
-          {techStack.map((tech, index) => (
-            <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.3, delay: index * 0.02 }}
-              className="group"
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mb-20"
+        >
+          <div className="marquee group rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900/40 overflow-hidden">
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-10 sm:w-16 bg-gradient-to-r from-white dark:from-slate-950 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-10 sm:w-16 bg-gradient-to-l from-white dark:from-slate-950 to-transparent" />
+
+            <div
+              className="marquee-track gap-4 sm:gap-5 py-5 px-3 sm:px-4 group-hover:[animation-play-state:paused]"
+              style={{ ['--marquee-duration']: '44s' }}
             >
-              <a
-                href={tech.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-white p-4 rounded-xl border border-slate-200 hover:border-slate-400 hover:shadow-lg transition-all duration-300 flex flex-col items-center gap-2"
-              >
-                <div className="transition-transform duration-300 group-hover:scale-110">
-                  <TechIcon icon={tech.icon} />
-                </div>
-                <span className="text-xs text-slate-600 group-hover:text-slate-800 text-center transition-colors duration-300 font-medium">
-                  {tech.name}
-                </span>
-              </a>
-            </motion.div>
-          ))}
-        </div>
+              {techMarquee.map((tech, index) => (
+                <a
+                  key={`${tech.name}-${index}`}
+                  href={tech.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 bg-white dark:bg-slate-950/40 px-5 py-3.5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/20 hover:shadow-lg dark:hover:shadow-black/30 transition-all duration-300 flex items-center gap-3.5"
+                >
+                  <div className="transition-transform duration-300 group-hover:scale-105">
+                    <TechIcon icon={tech.icon} />
+                  </div>
+                  <span className="text-[15px] sm:text-base text-slate-700 dark:text-slate-200 font-medium whitespace-nowrap">
+                    {tech.name}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </motion.div>
 
         {/* Soft Skills Section */}
         <motion.div
@@ -200,7 +210,7 @@ const Skills = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold">Soft Skills</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Soft Skills</h2>
           <div className="w-24 h-1 bg-primary-500 mx-auto mt-4 rounded-full" />
         </motion.div>
 
@@ -213,11 +223,11 @@ const Skills = () => {
               transition={{ duration: 0.4, delay: 0.4 + index * 0.05 }}
               className="group"
             >
-              <div className="bg-white p-5 rounded-xl border border-slate-200 hover:border-slate-400 hover:shadow-lg hover:bg-slate-50 transition-all duration-300 flex flex-col items-center gap-3">
+              <div className="bg-white dark:bg-slate-900/60 p-5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-slate-400 dark:hover:border-white/20 hover:shadow-lg dark:hover:shadow-black/30 hover:bg-slate-50 dark:hover:bg-white/5 transition-all duration-300 flex flex-col items-center gap-3">
                 <div className="transition-transform duration-300 group-hover:scale-110">
                   <TechIcon icon={skill.icon} color={skill.color} />
                 </div>
-                <span className="text-sm text-slate-600 group-hover:text-slate-800 text-center transition-colors duration-300 font-medium">
+                <span className="text-sm text-slate-600 dark:text-slate-300 group-hover:text-slate-800 dark:group-hover:text-white text-center transition-colors duration-300 font-medium">
                   {skill.name}
                 </span>
               </div>
