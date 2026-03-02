@@ -11,6 +11,14 @@ const Contact = () => {
   const [errors, setErrors] = useState({})
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+  const formName = 'contact'
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+      .join('&')
+  }
+
   // Validate form inputs
   const validateForm = () => {
     const newErrors = {}
@@ -25,13 +33,23 @@ const Contact = () => {
   }
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const newErrors = validateForm()
     if (Object.keys(newErrors).length === 0) {
-      setIsSubmitted(true)
-      setFormData({ name: '', email: '', message: '' })
-      setTimeout(() => setIsSubmitted(false), 3000)
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encode({ 'form-name': formName, ...formData }),
+        })
+
+        setIsSubmitted(true)
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => setIsSubmitted(false), 3000)
+      } catch (err) {
+        setErrors({ form: 'Something went wrong. Please try again.' })
+      }
     } else {
       setErrors(newErrors)
     }
@@ -131,7 +149,20 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <form onSubmit={handleSubmit} className="bg-white/50 dark:bg-slate-950/40 p-8 rounded-2xl border border-slate-100 dark:border-white/10">
+            <form
+              name={formName}
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit}
+              className="bg-white/50 dark:bg-slate-950/40 p-8 rounded-2xl border border-slate-100 dark:border-white/10"
+            >
+              <input type="hidden" name="form-name" value={formName} />
+              <p className="hidden">
+                <label>
+                  Don’t fill this out if you’re human: <input name="bot-field" onChange={handleChange} />
+                </label>
+              </p>
               <div className="mb-6">
                 <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                   Your Name
@@ -145,7 +176,7 @@ const Contact = () => {
                   className={`w-full px-4 py-3 bg-white dark:bg-slate-950 border rounded-lg text-slate-900 dark:text-white placeholder-gray-500 dark:placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors duration-300 ${
                     errors.name ? 'border-red-500' : 'border-slate-300'
                   }`}
-                  placeholder="John Doe"
+                  placeholder="Enter your name here..."
                 />
                 {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
               </div>
@@ -163,7 +194,7 @@ const Contact = () => {
                   className={`w-full px-4 py-3 bg-white dark:bg-slate-950 border rounded-lg text-slate-900 dark:text-white placeholder-gray-500 dark:placeholder-slate-400 focus:outline-none focus:border-primary-500 transition-colors duration-300 ${
                     errors.email ? 'border-red-500' : 'border-slate-300'
                   }`}
-                  placeholder="john@example.com"
+                  placeholder="Enter your email here..."
                 />
                 {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
               </div>
@@ -193,6 +224,12 @@ const Contact = () => {
                 <Send size={18} />
                 Send Message
               </button>
+
+              {errors.form && (
+                <p className="text-red-400 text-center mt-4">
+                  {errors.form}
+                </p>
+              )}
 
               {isSubmitted && (
                 <motion.p

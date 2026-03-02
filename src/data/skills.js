@@ -14,6 +14,7 @@ export const techStack = [
 
   // Backend
   { name: "Django", category: "Backend", icon: "django", url: "https://www.djangoproject.com/" },
+  { name: ".NET", category: "Backend", icon: "dotnet", url: "https://dotnet.microsoft.com/" },
   { name: "C", category: "Languages", icon: "c", url: "https://en.cppreference.com/w/c" },
   { name: "C++", category: "Languages", icon: "cpp", url: "https://en.cppreference.com/w/cpp" },
 

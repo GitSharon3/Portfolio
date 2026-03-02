@@ -26,79 +26,16 @@ const Projects = () => {
   }, [activeFilter])
 
   const scrollerRef = useRef(null)
-  const [activeProjectId, setActiveProjectId] = useState(filteredProjects[0]?.id)
-  const projectIds = useMemo(() => filteredProjects.map((p) => p.id), [filteredProjects])
-  const [proximity, setProximity] = useState({})
-  const [carouselReady, setCarouselReady] = useState(false)
 
   const variantForProject = (p) => (p.type === 'mobile' ? 'mobile' : 'web')
 
   useEffect(() => {
-    setActiveProjectId(filteredProjects[0]?.id)
     const scroller = scrollerRef.current
     if (!scroller) return
-    setCarouselReady(false)
-
     requestAnimationFrame(() => {
       scroller.scrollTo({ left: 0, behavior: 'auto' })
     })
   }, [activeFilter])
-
-  useEffect(() => {
-    const scroller = scrollerRef.current
-    if (!scroller) return
-
-    let rafId = null
-
-    const compute = () => {
-      rafId = null
-
-      const centerX = scroller.scrollLeft + scroller.clientWidth / 2
-      const next = {}
-
-      let bestId = activeProjectId
-      let bestT = -1
-
-      const children = Array.from(scroller.children)
-      for (const child of children) {
-        const id = Number(child.getAttribute('data-project-id'))
-        if (Number.isNaN(id)) continue
-
-        const childCenter = child.offsetLeft + child.offsetWidth / 2
-        const dist = Math.abs(childCenter - centerX)
-        const max = scroller.clientWidth * 0.6
-        const t = Math.max(0, 1 - dist / max)
-        next[id] = t
-
-        if (t > bestT + 0.001) {
-          bestT = t
-          bestId = id
-        }
-      }
-
-      setProximity(next)
-      setCarouselReady((prev) => (prev ? prev : true))
-
-      if (bestId != null && bestId !== activeProjectId) {
-        setActiveProjectId(bestId)
-      }
-    }
-
-    const requestCompute = () => {
-      if (rafId != null) return
-      rafId = requestAnimationFrame(compute)
-    }
-
-    requestCompute()
-    scroller.addEventListener('scroll', requestCompute, { passive: true })
-    window.addEventListener('resize', requestCompute)
-
-    return () => {
-      scroller.removeEventListener('scroll', requestCompute)
-      window.removeEventListener('resize', requestCompute)
-      if (rafId != null) cancelAnimationFrame(rafId)
-    }
-  }, [projectIds, activeProjectId])
 
   return (
     <section id="projects" className="py-20 md:py-32 bg-white dark:bg-slate-950">
@@ -154,26 +91,18 @@ const Projects = () => {
 
           <div
             ref={scrollerRef}
-            className="no-scrollbar flex gap-6 sm:gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6 -mx-4 px-4 overscroll-x-contain"
+            className="no-scrollbar flex gap-6 sm:gap-8 overflow-x-auto snap-x snap-mandatory pb-6 -mx-4 px-4 overscroll-x-contain"
+            style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-y' }}
           >
             {filteredProjects.map((project, index) => (
               <div
                 key={project.id}
                 data-project-id={project.id}
                 className="snap-center shrink-0 w-[85%] sm:w-[70%] md:w-[56%] lg:w-[44%] xl:w-[38%]"
-                style={{
-                  transformOrigin: 'center center',
-                  transform: `translateY(${(1 - (proximity[project.id] ?? 0)) * 10}px) scale(${0.92 + (proximity[project.id] ?? 0) * 0.10})`,
-                  opacity: 0.72 + (proximity[project.id] ?? 0) * 0.28,
-                  transition: carouselReady
-                    ? 'transform 220ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms cubic-bezier(0.22, 1, 0.36, 1)'
-                    : 'none'
-                }}
               >
                 <ProjectCard
                   project={project}
                   index={index}
-                  active={activeProjectId === project.id}
                   variant={variantForProject(project)}
                 />
               </div>
