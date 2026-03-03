@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Award, Briefcase, GraduationCap, Code } from 'lucide-react'
-import profilePhoto from '../data/sharon.png'
+import profilePhoto from '../assets/dp_image/sharon.png'
 
 // About section with bio and achievements - enhanced with smooth animations
 const About = () => {

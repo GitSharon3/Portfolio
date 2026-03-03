@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Menu, X, Eye, FileDown, Moon, Sun } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import resumeImg from '../assets/Pdf/image.png'
 
 // Navigation header with scroll detection and mobile menu
 const Header = () => {
@@ -313,7 +314,7 @@ const Header = () => {
                 <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href="src/Pdf/image.png"
+                  href={resumeImg}
                   download="Sharon_Kadariya_CV.png"
                   className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-medium rounded-lg hover:shadow-lg transition-all duration-300"
                 >
@@ -342,7 +343,7 @@ const Header = () => {
                 {/* Preview placeholder */}
                 <div className="relative">
                   <img 
-                    src="src/Pdf/image.png" 
+                    src={resumeImg} 
                     alt="Resume Preview" 
                     className="w-full h-auto rounded-lg shadow-sm"
                     onError={(e) => {
@@ -365,7 +366,7 @@ const Header = () => {
                   <motion.a
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    href="src/Pdf/image.png"
+                    href={resumeImg}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 px-4 py-3 bg-white border border-slate-300 text-slate-700 rounded-lg hover:border-primary-500 hover:text-primary-600 transition-all duration-300 text-sm font-medium"
@@ -376,7 +377,7 @@ const Header = () => {
                   <motion.a
                     whileHover={{ scale: 1.02, y: -2 }}
                     whileTap={{ scale: 0.98 }}
-                    href="src/Pdf/image.png"
+                    href={resumeImg}
                     download="Sharon_Kadariya_CV.png"
                     className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-lg hover:shadow-lg transition-all duration-300 text-sm font-medium"
                   >

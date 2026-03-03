@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Mail, Phone, Github, Linkedin } from 'lucide-react'
 import { useTypewriter } from '../hooks/useTypewriter'
-import profilePhoto from '../data/Image.jpg'
+import profilePhoto from '../assets/dp_image/sharon1.jpg'
 
 // Hero section with animated intro and typewriter effect
 const Hero = () => {

@@ -1,7 +1,7 @@
-import yardImg from '../images/yard.png'
-import biruwasmartImg from '../images/biruwasmart.png'
-import todoImg from '../images/todo.png'
-import biruwaWebsiteImg from '../images/biruwa-website.png'
+import yardImg from '../assets/images/yard.png'
+import biruwasmartImg from '../assets/images/biruwasmart.png'
+import todoImg from '../assets/images/todo.png'
+import biruwaWebsiteImg from '../assets/images/biruwa-website.png'
 
 // Projects portfolio data
 export const projects = [
