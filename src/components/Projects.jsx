@@ -1,9 +1,9 @@
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { Github } from 'lucide-react'
 import { projects } from '../data/projects'
 import ProjectCard from './ProjectCard'
 
-// Projects showcase section
 const Projects = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
@@ -18,7 +18,7 @@ const Projects = () => {
 
   const filters = useMemo(
     () => [
-      { key: 'all', label: 'All' },
+      { key: 'all', label: 'All Projects' },
       { key: 'web', label: 'Web Apps' },
       { key: 'mobile', label: 'Mobile Apps' }
     ],
@@ -122,52 +122,53 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Projects</h2>
-          <div className="w-24 h-1 bg-primary-500 mx-auto mt-4 rounded-full" />
-          <p className="mt-4 text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Projects</h2>
+          <div className="w-20 sm:w-24 h-1 bg-primary-500 mx-auto mt-4 rounded-full" />
+          <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             A selection of my work across web, mobile, and full-stack projects
           </p>
         </motion.div>
 
+        {/* Filter Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.12 }}
           className="flex flex-wrap justify-center gap-2 mb-10"
         >
-          {filters.map((f) => {
-            const isActive = activeFilter === f.key
-            return (
-              <button
-                key={f.key}
-                type="button"
-                onClick={() => setActiveFilter(f.key)}
-                className={
-                  isActive
-                    ? 'px-4 py-2 rounded-full bg-primary-500 text-white text-sm font-medium'
-                    : 'px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 text-slate-700 dark:text-slate-200 text-sm font-medium transition-colors'
-                }
-              >
-                {f.label}
-              </button>
-            )
-          })}
+          {filters.map((f) => (
+            <button
+              key={f.key}
+              type="button"
+              onClick={() => setActiveFilter(f.key)}
+              className={
+                activeFilter === f.key
+                  ? 'px-5 py-2 rounded-full bg-primary-500 text-white text-sm font-medium shadow-lg'
+                  : 'px-5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 text-slate-700 dark:text-slate-200 text-sm font-medium transition-all'
+              }
+            >
+              {f.label}
+            </button>
+          ))}
         </motion.div>
 
+        {/* Centered Carousel */}
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.18 }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="relative"
         >
-          <div className="absolute inset-y-0 left-0 w-10 sm:w-14 bg-gradient-to-r from-white dark:from-slate-950 to-transparent pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-10 sm:w-14 bg-gradient-to-l from-white dark:from-slate-950 to-transparent pointer-events-none" />
+          {/* Side Gradients */}
+          <div className="absolute inset-y-0 left-0 w-10 sm:w-14 bg-gradient-to-r from-white dark:from-slate-950 to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-y-0 right-0 w-10 sm:w-14 bg-gradient-to-l from-white dark:from-slate-950 to-transparent pointer-events-none z-10" />
 
-          <div className="hidden sm:flex items-center justify-between absolute inset-y-0 -left-2 -right-2 pointer-events-none">
+          {/* Navigation Arrows */}
+          <div className="flex items-center justify-between absolute inset-y-0 left-0 right-0 sm:-left-2 sm:-right-2 pointer-events-none z-20 px-2 sm:px-0">
             <button
               type="button"
               onClick={() => scrollToIndex(clampIndex(activeIndex - 1))}
-              className="pointer-events-auto h-10 w-10 rounded-full bg-white/90 dark:bg-slate-950/80 border border-slate-200 dark:border-white/10 shadow hover:shadow-md transition-all flex items-center justify-center text-slate-700 dark:text-slate-200"
+              className="pointer-events-auto h-10 w-10 rounded-full bg-white/95 dark:bg-slate-950/90 border border-slate-200 dark:border-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center text-slate-700 dark:text-slate-200 disabled:opacity-30 disabled:cursor-not-allowed"
               aria-label="Previous project"
               disabled={activeIndex === 0}
             >
@@ -176,7 +177,7 @@ const Projects = () => {
             <button
               type="button"
               onClick={() => scrollToIndex(clampIndex(activeIndex + 1))}
-              className="pointer-events-auto h-10 w-10 rounded-full bg-white/90 dark:bg-slate-950/80 border border-slate-200 dark:border-white/10 shadow hover:shadow-md transition-all flex items-center justify-center text-slate-700 dark:text-slate-200"
+              className="pointer-events-auto h-10 w-10 rounded-full bg-white/95 dark:bg-slate-950/90 border border-slate-200 dark:border-white/10 shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center text-slate-700 dark:text-slate-200 disabled:opacity-30 disabled:cursor-not-allowed"
               aria-label="Next project"
               disabled={activeIndex === filteredProjects.length - 1}
             >
@@ -184,13 +185,14 @@ const Projects = () => {
             </button>
           </div>
 
+          {/* Carousel Container */}
           <div
             ref={carouselRef}
             className="overflow-x-auto scroll-smooth snap-x snap-mandatory touch-pan-x overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             style={{ WebkitOverflowScrolling: 'touch' }}
           >
             <div
-              className="flex gap-6 sm:gap-8 py-2"
+              className="flex gap-6 sm:gap-8 py-2 items-start"
               style={{ paddingLeft: sidePadding, paddingRight: sidePadding }}
             >
               {filteredProjects.map((project, index) => (
@@ -200,7 +202,7 @@ const Projects = () => {
                     slideRefs.current[index] = el
                     if (index === 0) firstSlideRef.current = el
                   }}
-                  className="snap-center shrink-0 w-[85vw] max-w-[420px] sm:w-[420px]"
+                  className="snap-center shrink-0 w-[85vw] sm:w-[380px] md:w-[400px] lg:w-[420px]"
                   style={{ scrollSnapStop: 'always' }}
                 >
                   <ProjectCard project={project} />
@@ -209,6 +211,7 @@ const Projects = () => {
             </div>
           </div>
 
+          {/* Pagination Dots */}
           <div className="mt-6 flex items-center justify-center gap-2">
             {filteredProjects.map((p, i) => (
               <button
@@ -224,6 +227,24 @@ const Projects = () => {
               />
             ))}
           </div>
+        </motion.div>
+
+        {/* View More on GitHub Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 text-center"
+        >
+          <a
+            href="https://github.com/GitSharon3"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-200 text-white dark:text-slate-900 rounded-full font-medium transition-all hover:shadow-lg"
+          >
+            <Github size={18} />
+            View More on GitHub
+          </a>
         </motion.div>
       </div>
     </section>
