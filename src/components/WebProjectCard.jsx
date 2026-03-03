@@ -20,17 +20,25 @@ const WebProjectCard = ({ project }) => {
     >
       <div className="h-full bg-white dark:bg-slate-950/60 rounded-2xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-black/30 overflow-hidden flex flex-col">
         
-        {/* Project Image - 16:10 for web projects */}
-        <div className="relative aspect-[16/10] bg-slate-100 dark:bg-slate-900 overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover"
-            draggable={false}
-            loading="lazy"
-          />
+        {/* Project Preview - compact height to match mobile cards */}
+        <div className="relative h-[320px] sm:h-[340px] bg-slate-100 dark:bg-slate-900 overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-10">
+            <div className="relative h-full max-h-[240px] sm:max-h-[260px] w-full rounded-[0.875rem] sm:rounded-[1rem] bg-slate-900 shadow-2xl p-[2px]">
+              <div className="relative w-full h-full rounded-[0.75rem] sm:rounded-[0.9rem] bg-black overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                  draggable={false}
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-slate-950/10 to-transparent" />
+
           {/* Category badge */}
           <div className="absolute left-3 sm:left-4 bottom-3 sm:bottom-4">
             <span className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs font-semibold bg-white/90 dark:bg-slate-950/70 text-slate-900 dark:text-white border border-white/60 dark:border-white/10">
