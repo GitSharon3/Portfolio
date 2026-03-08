@@ -2,6 +2,7 @@
 import yardImg from '../assets/images/yard.png'
 import todoImg from '../assets/images/todo.png'
 import biruwaWebsiteImg from '../assets/images/biruwa-website.png'
+import weatherAppImg from '../assets/images/weather-app.png'
 
 // Mobile project media (BiruwaSmart App)
 import biruwaSmartCover from '../assets/images/BiruwaSmart/BiruwaSmart.png'
@@ -48,6 +49,17 @@ export const projects = [
     techStack: ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "SQLite"],
     github: "https://github.com/GitSharon3/Biruwa",
     live: "https://biruwa-demo.netlify.app",
+    category: "Web Application"
+  },
+  {
+    id: 5,
+    title: "Weather App",
+    description: "A responsive React weather application that fetches real-time weather data using the OpenWeatherMap API. Search any city to view temperature, humidity, wind speed, and current conditions.",
+    image: weatherAppImg,
+    type: "web",
+    techStack: ["React JS", "OpenWeatherMap API", "Responsive UI"],
+    github: "https://github.com/GitSharon3/Weather_App",
+    live: "https://weather-app-demo-net.netlify.app",
     category: "Web Application"
   },
 
