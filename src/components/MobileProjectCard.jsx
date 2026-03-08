@@ -29,7 +29,7 @@ import { Github, X, MonitorPlay, Image as ImageIcon, PlayCircle } from 'lucide-r
  * @param {Array} props.project.media.screenshots - Array of screenshot paths
  * @param {string} props.project.media.video - Video file path
  */
-const MobileProjectCard = ({ project }) => {
+const MobileProjectCard = ({ project, onPreview }) => {
   // Check if GitHub URL is valid
   const hasGithub = Boolean(project.github) && project.github !== '#'
 
@@ -110,7 +110,20 @@ const MobileProjectCard = ({ project }) => {
         <div className="h-full bg-white dark:bg-slate-950/60 rounded-2xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-black/30 overflow-hidden flex flex-col">
           
           {/* Phone Mockup Preview - shorter container */}
-          <div className="relative h-[320px] sm:h-[340px] bg-slate-100 dark:bg-slate-900 overflow-hidden">
+          <div
+            className="relative h-[320px] sm:h-[340px] bg-slate-100 dark:bg-slate-900 overflow-hidden cursor-pointer"
+            role={onPreview ? 'button' : undefined}
+            tabIndex={onPreview ? 0 : undefined}
+            aria-label={onPreview ? `Open preview for ${project.title}` : undefined}
+            onClick={() => onPreview?.()}
+            onKeyDown={(e) => {
+              if (!onPreview) return
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                onPreview()
+              }
+            }}
+          >
             <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-10">
               {/* Phone Frame - very small */}
               <div className="relative h-full max-h-[240px] sm:max-h-[260px] aspect-[9/19] rounded-[0.875rem] sm:rounded-[1rem] bg-slate-900 shadow-2xl p-[2px]">

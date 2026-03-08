@@ -6,7 +6,7 @@
 import { motion } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
 
-const WebProjectCard = ({ project }) => {
+const WebProjectCard = ({ project, onPreview }) => {
   const hasLive = Boolean(project.live) && project.live !== '#'
   const hasGithub = Boolean(project.github) && project.github !== '#'
 
@@ -21,7 +21,20 @@ const WebProjectCard = ({ project }) => {
       <div className="h-full bg-white dark:bg-slate-950/60 rounded-2xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-black/30 overflow-hidden flex flex-col">
         
         {/* Project Preview - compact height to match mobile cards */}
-        <div className="relative h-[320px] sm:h-[340px] bg-slate-100 dark:bg-slate-900 overflow-hidden">
+        <div
+          className="relative h-[320px] sm:h-[340px] bg-slate-100 dark:bg-slate-900 overflow-hidden cursor-pointer"
+          role={onPreview ? 'button' : undefined}
+          tabIndex={onPreview ? 0 : undefined}
+          aria-label={onPreview ? `Open preview for ${project.title}` : undefined}
+          onClick={() => onPreview?.()}
+          onKeyDown={(e) => {
+            if (!onPreview) return
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              onPreview()
+            }
+          }}
+        >
           <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-10">
             <div className="relative h-full max-h-[240px] sm:max-h-[260px] w-full rounded-[0.875rem] sm:rounded-[1rem] bg-slate-900 shadow-2xl p-[2px]">
               <div className="relative w-full h-full rounded-[0.75rem] sm:rounded-[0.9rem] bg-black overflow-hidden">
