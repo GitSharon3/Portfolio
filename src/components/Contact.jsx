@@ -38,15 +38,19 @@ const Contact = () => {
     const newErrors = validateForm()
     if (Object.keys(newErrors).length === 0) {
       try {
-        await fetch('/', {
+        const response = await fetch('https://formspree.io/f/xbdzgdok', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encode({ 'form-name': formName, ...formData }),
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(e.target),
         })
 
-        setIsSubmitted(true)
-        setFormData({ name: '', email: '', message: '' })
-        setTimeout(() => setIsSubmitted(false), 3000)
+        if (response.ok) {
+          setIsSubmitted(true)
+          setFormData({ name: '', email: '', message: '' })
+          setTimeout(() => setIsSubmitted(false), 5000)
+        } else {
+          setErrors({ form: 'Failed to send message. Please try again.' })
+        }
       } catch (err) {
         setErrors({ form: 'Something went wrong. Please try again.' })
       }
@@ -150,17 +154,15 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <form
-              name={formName}
+              action="https://formspree.io/f/xbdzgdok"
               method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
               onSubmit={handleSubmit}
               className="bg-white/50 dark:bg-slate-950/40 p-8 rounded-2xl border border-slate-100 dark:border-white/10"
             >
-              <input type="hidden" name="form-name" value={formName} />
+              <input type="hidden" name="_gotcha" />
               <p className="hidden">
                 <label>
-                  Don’t fill this out if you’re human: <input name="bot-field" onChange={handleChange} />
+                  Don’t fill this out if you’re human: <input name="_gotcha" />
                 </label>
               </p>
               <div className="mb-6">
