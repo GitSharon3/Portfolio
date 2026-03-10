@@ -115,6 +115,10 @@ const MobileProjectCard = ({ project, onPreview }) => {
             tabIndex={onPreview ? 0 : undefined}
             aria-label={onPreview ? `Open preview for ${project.title}` : undefined}
             onClick={() => onPreview?.()}
+            onTouchEnd={(e) => {
+              e.preventDefault()
+              onPreview?.()
+            }}
             onKeyDown={(e) => {
               if (!onPreview) return
               if (e.key === 'Enter' || e.key === ' ') {
