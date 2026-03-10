@@ -202,7 +202,7 @@ const Projects = () => {
                     slideRefs.current[index] = el
                     if (index === 0) firstSlideRef.current = el
                   }}
-                  className="snap-center shrink-0 w-[85vw] sm:w-[380px] md:w-[400px] lg:w-[420px]"
+                  className="snap-center shrink-0 w-[85vw] sm:w-[380px] md:w-[400px] lg:w-[420px] mb-4"
                   style={{ scrollSnapStop: 'always' }}
                 >
                   <ProjectCard project={project} />

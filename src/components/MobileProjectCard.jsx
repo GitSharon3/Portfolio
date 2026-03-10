@@ -105,9 +105,8 @@ const MobileProjectCard = ({ project, onPreview }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.45 }}
-        className="h-full"
       >
-        <div className="h-full bg-white dark:bg-slate-950/60 rounded-2xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-black/30 overflow-hidden flex flex-col">
+        <div className="bg-white dark:bg-slate-950/60 rounded-2xl border border-slate-200 dark:border-white/10 shadow-lg dark:shadow-black/30 overflow-hidden flex flex-col">
           
           {/* Phone Mockup Preview - shorter container */}
           <div

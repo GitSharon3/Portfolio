@@ -37,7 +37,7 @@ export const projects = [
     type: "web",
     techStack: ["React JS", "LocalStorage", "CSS3"],
     github: "https://github.com/GitSharon3/TODO_APP",
-    live: "https://todoappsharon.netlify.app",
+    live: "todoapp-sharon.netlify.app",
     category: "Web Application"
   },
   {
@@ -59,7 +59,7 @@ export const projects = [
     type: "web",
     techStack: ["React JS", "OpenWeatherMap API", "Responsive UI"],
     github: "https://github.com/GitSharon3/Weather_App",
-    live: "https://weather-app-demo-net.netlify.app",
+    live: "weather-app-net-demo.netlify.app",
     category: "Web Application"
   },
 
