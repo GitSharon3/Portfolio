@@ -159,12 +159,7 @@ const Contact = () => {
               onSubmit={handleSubmit}
               className="bg-white/50 dark:bg-slate-950/40 p-8 rounded-2xl border border-slate-100 dark:border-white/10"
             >
-              <input type="hidden" name="_gotcha" />
-              <p className="hidden">
-                <label>
-                  Don’t fill this out if you’re human: <input name="_gotcha" />
-                </label>
-              </p>
+              <input type="text" name="_gotcha" className="hidden" />
               <div className="mb-6">
                 <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-2">
                   Your Name
@@ -234,13 +229,9 @@ const Contact = () => {
               )}
 
               {isSubmitted && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-green-400 text-center mt-4"
-                >
+                <p className="text-green-500 text-center mt-4 font-medium">
                   Message sent successfully! I'll get back to you soon.
-                </motion.p>
+                </p>
               )}
             </form>
           </motion.div>
