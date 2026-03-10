@@ -14,7 +14,7 @@ import biruwaSmartShot5 from '../assets/images/BiruwaSmart/image copy 4.png'
 import biruwaSmartShot6 from '../assets/images/BiruwaSmart/image copy 5.png'
 import biruwaSmartShot7 from '../assets/images/BiruwaSmart/image copy 6.png'
 import biruwaSmartShot8 from '../assets/images/BiruwaSmart/image copy 7.png'
-import biruwaSmartVideo from '../assets/images/BiruwaSmart/IMG_0989.MOV'
+import biruwaSmartVideo from '../assets/images/BiruwaSmart/IMG_0989.mp4'
 
 export const projects = [
   // Web Projects
