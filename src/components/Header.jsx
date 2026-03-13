@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Menu, X, Eye, FileDown, Moon, Sun } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import resumeImg from '../assets/Pdf/image.png'
+import cvPdf from '../assets/Pdf/cv.pdf'
 
 // Navigation header with scroll detection and mobile menu
 const Header = () => {
@@ -314,8 +314,8 @@ const Header = () => {
                 <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href={resumeImg}
-                  download="Sharon_Kadariya_CV.png"
+                  href={cvPdf}
+                  download="Sharon_Kadariya_CV.pdf"
                   className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-medium rounded-lg hover:shadow-lg transition-all duration-300"
                 >
                   <FileDown size={16} />
@@ -333,59 +333,51 @@ const Header = () => {
             </div>
             
             {/* Resume Preview */}
-            <div className="p-4 sm:p-6 bg-slate-50 overflow-auto max-h-[70vh]">
+            <div className="p-4 sm:p-6 bg-slate-50 overflow-hidden max-h-[70vh]">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="bg-white rounded-xl shadow-sm p-4 sm:p-8 max-w-2xl mx-auto"
+                className="bg-white rounded-xl shadow-sm overflow-hidden max-w-3xl mx-auto h-[60vh]"
               >
-                {/* Preview placeholder */}
-                <div className="relative">
-                  <img 
-                    src={resumeImg} 
-                    alt="Resume Preview" 
-                    className="w-full h-auto rounded-lg shadow-sm"
-                    onError={(e) => {
-                      e.target.style.display = 'none'
-                      e.target.nextSibling.style.display = 'flex'
-                    }}
-                  />
-                  {/* Fallback when image doesn't load */}
-                  <div className="hidden flex-col items-center justify-center py-20 text-slate-500">
-                    <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-4">
-                      <FileDown size={32} className="text-slate-400" />
-                    </div>
-                    <p className="text-center font-medium">Resume Preview</p>
-                    <p className="text-sm text-slate-400 mt-2">Click download to view the full CV</p>
-                  </div>
-                </div>
-                
-                {/* Quick actions below preview */}
-                <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-6 border-t border-slate-100">
-                  <motion.a
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    href={resumeImg}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-4 py-3 bg-white border border-slate-300 text-slate-700 rounded-lg hover:border-primary-500 hover:text-primary-600 transition-all duration-300 text-sm font-medium"
-                  >
-                    <Eye size={18} />
-                    Open in New Tab
-                  </motion.a>
-                  <motion.a
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    href={resumeImg}
-                    download="Sharon_Kadariya_CV.png"
-                    className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-lg hover:shadow-lg transition-all duration-300 text-sm font-medium"
-                  >
-                    <FileDown size={18} />
-                    Download Resume
-                  </motion.a>
-                </div>
+                {/* PDF Viewer */}
+                <embed
+                  src={cvPdf}
+                  type="application/pdf"
+                  className="w-full h-full"
+                  title="Sharon Kadariya - Resume"
+                />
               </motion.div>
+              
+              {/* Fallback message for browsers that don't support PDF embedding */}
+              <div className="text-center mt-4 text-sm text-slate-500">
+                <p>If the PDF doesn't display, you can download it above.</p>
+              </div>
+                
+              {/* Quick actions below preview */}
+              <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-6 border-t border-slate-100 max-w-3xl mx-auto">
+                <motion.a
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  href={cvPdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-4 py-3 bg-white border border-slate-300 text-slate-700 rounded-lg hover:border-primary-500 hover:text-primary-600 transition-all duration-300 text-sm font-medium"
+                >
+                  <Eye size={18} />
+                  Open in New Tab
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  href={cvPdf}
+                  download="Sharon_Kadariya_CV.pdf"
+                  className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-lg hover:shadow-lg transition-all duration-300 text-sm font-medium"
+                >
+                  <FileDown size={18} />
+                  Download Resume
+                </motion.a>
+              </div>
             </div>
           </motion.div>
         </motion.div>

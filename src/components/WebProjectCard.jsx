@@ -5,10 +5,26 @@
 
 import { motion } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 const WebProjectCard = ({ project, onPreview }) => {
   const hasLive = Boolean(project.live) && project.live !== '#'
   const hasGithub = Boolean(project.github) && project.github !== '#'
+
+  // Detect mobile viewport (below sm breakpoint of 640px)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Only enable preview on non-mobile (tablet and desktop)
+  const previewEnabled = !isMobile && onPreview
 
   return (
     <motion.div
@@ -21,20 +37,21 @@ const WebProjectCard = ({ project, onPreview }) => {
         
         {/* Project Preview - compact height to match mobile cards */}
         <div
-          className="relative h-[320px] sm:h-[340px] bg-slate-100 dark:bg-slate-900 overflow-hidden cursor-pointer"
-          role={onPreview ? 'button' : undefined}
-          tabIndex={onPreview ? 0 : undefined}
-          aria-label={onPreview ? `Open preview for ${project.title}` : undefined}
-          onClick={() => onPreview?.()}
+          className={`relative h-[320px] sm:h-[340px] bg-slate-100 dark:bg-slate-900 overflow-hidden ${previewEnabled ? 'cursor-pointer' : ''}`}
+          role={previewEnabled ? 'button' : undefined}
+          tabIndex={previewEnabled ? 0 : undefined}
+          aria-label={previewEnabled ? `Open preview for ${project.title}` : undefined}
+          onClick={() => previewEnabled?.()}
           onTouchEnd={(e) => {
+            if (!previewEnabled) return
             e.preventDefault()
-            onPreview?.()
+            previewEnabled()
           }}
           onKeyDown={(e) => {
-            if (!onPreview) return
+            if (!previewEnabled) return
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault()
-              onPreview()
+              previewEnabled()
             }
           }}
         >
