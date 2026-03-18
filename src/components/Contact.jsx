@@ -68,9 +68,9 @@ const Contact = () => {
 
   // Contact information data
   const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'sharondotkadariyaa@email.com', href: 'mailto:sharondotkadariyaa@email.com' },
+    { icon: Mail, label: 'Email', value: 'sharondotkadariyaa@gmail.com', href: 'mailto:sharondotkadariyaa@email.com' },
     { icon: Phone, label: 'Phone', value: '+977 9869785631', href: 'tel:+977 9869785631' },
-    { icon: MapPin, label: 'Location', value: 'Kathmandu, Nepal', href: '#' },
+    { icon: MapPin, label: 'Location', value: 'Bhaktapur, Nepal', href: '#' },
   ]
 
   // Social media links

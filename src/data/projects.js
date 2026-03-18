@@ -3,6 +3,7 @@ import yardImg from '../assets/images/yard.png'
 import todoImg from '../assets/images/todo.png'
 import biruwaWebsiteImg from '../assets/images/biruwa-website.png'
 import weatherAppImg from '../assets/images/weather-app.png'
+import ecommerceImg from '../assets/images/Ecommerce.png'
 
 // Mobile project media (BiruwaSmart App)
 import biruwaSmartCover from '../assets/images/BiruwaSmart/BiruwaSmart.png'
@@ -24,9 +25,9 @@ export const projects = [
     description: "A comprehensive yard management solution built during internship at EXOTRAC LLC. Streamlines logistics operations with real-time tracking and management features.",
     image: yardImg,
     type: "web",
-    techStack: ["React JS", ".NET", "SQL Server", "REST API"],
+    techStack: ["React JS", ".NET", "PostgreSQL", "REST API"],
     github: "https://github.com/GitSharon3/YMS-YardManagementSystem",
-    live: "https://yard-management-demo.netlify.app",
+    live: "#",
     category: "Web Application"
   },
   {
@@ -48,7 +49,7 @@ export const projects = [
     type: "web",
     techStack: ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "SQLite"],
     github: "https://github.com/GitSharon3/Biruwa",
-    live: "https://biruwa-demo.netlify.app",
+    live: "#",
     category: "Web Application"
   },
   {
@@ -60,6 +61,17 @@ export const projects = [
     techStack: ["React JS", "OpenWeatherMap API", "Responsive UI"],
     github: "https://github.com/GitSharon3/Weather_App",
     live: "weather-app-net-demo.netlify.app",
+    category: "Web Application"
+  },
+  {
+    id: 6,
+    title: "Aurora Eyewear",
+    description: "A full-stack e-commerce web application for an eyeglasses brand featuring product browsing, cart management, checkout flow, and responsive dark/light mode design.",
+    image: ecommerceImg,
+    type: "web",
+    techStack: ["Next.js 16", "React", "TypeScript", "Tailwind CSS", "Redux Toolkit"],
+    github: "https://github.com/GitSharon3/E-Commerce_React_App",
+    live: "https://e-commerce-react-app-murex.vercel.app",
     category: "Web Application"
   },
 
