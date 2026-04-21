@@ -15,20 +15,6 @@ import { motion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
 import { Github, X, MonitorPlay, Image as ImageIcon, PlayCircle } from 'lucide-react'
 
-/**
- * Mobile Project Card Component
- * @param {Object} props - Component props
- * @param {Object} props.project - Project data object
- * @param {string} props.project.title - Project name
- * @param {string} props.project.description - Project description
- * @param {string} props.project.image - Project cover image path
- * @param {string} props.project.category - Project category label
- * @param {Array} props.project.techStack - List of technologies used
- * @param {string} props.project.github - GitHub repository URL
- * @param {Object} props.project.media - Media files for the project
- * @param {Array} props.project.media.screenshots - Array of screenshot paths
- * @param {string} props.project.media.video - Video file path
- */
 const MobileProjectCard = ({ project, onPreview }) => {
   // Check if GitHub URL is valid
   const hasGithub = Boolean(project.github) && project.github !== '#'

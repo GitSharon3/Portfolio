@@ -57,11 +57,11 @@ const WebProjectCard = ({ project, onPreview }) => {
         >
           <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-10">
             <div className="relative h-full max-h-[240px] sm:max-h-[260px] w-full rounded-[0.875rem] sm:rounded-[1rem] bg-slate-900 shadow-2xl p-[2px]">
-              <div className="relative w-full h-full rounded-[0.75rem] sm:rounded-[0.9rem] bg-black overflow-hidden">
+              <div className="relative w-full h-full rounded-[0.75rem] sm:rounded-[0.9rem] bg-slate-800 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   draggable={false}
                   loading="lazy"
                 />

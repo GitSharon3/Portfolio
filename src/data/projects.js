@@ -4,6 +4,8 @@ import todoImg from '../assets/images/todo.png'
 import biruwaWebsiteImg from '../assets/images/biruwa-website.png'
 import weatherAppImg from '../assets/images/weather-app.png'
 import ecommerceImg from '../assets/images/Ecommerce.png'
+import ramroCVImg from '../assets/images/resume-builder.png'
+import myBlogImg from '../assets/images/blog.png'
 
 // Mobile project media (BiruwaSmart App)
 import biruwaSmartCover from '../assets/images/BiruwaSmart/BiruwaSmart.png'
@@ -30,41 +32,21 @@ export const projects = [
     live: "#",
     category: "Web Application"
   },
-  {
+
+   {
     id: 3,
-    title: "ToDo App",
-    description: "A clean, intuitive task management application with features like task categorization, due dates, and progress tracking.",
-    image: todoImg,
+    title: "RamroCV",
+    description:"A resume builder web application that allows users to create, customize, and download professional CVs with modern templates and real-time preview.",
+    image: ramroCVImg,
     type: "web",
-    techStack: ["React JS", "LocalStorage", "CSS3"],
-    github: "https://github.com/GitSharon3/TODO_APP",
-    live: "todoapp-sharon.netlify.app",
+    techStack: ["React", "TypeScript", "Tailwind CSS"],
+    github: "https://github.com/GitSharon3/RamroCV",
+    live: "https://gitsharon3.github.io/RamroCV",
     category: "Web Application"
   },
-  {
+
+   {
     id: 4,
-    title: "Biruwa Website",
-    description: "Full-stack e-commerce website for Birwa with user authentication, product management, and payment integration.",
-    image: biruwaWebsiteImg,
-    type: "web",
-    techStack: ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "SQLite"],
-    github: "https://github.com/GitSharon3/Biruwa",
-    live: "#",
-    category: "Web Application"
-  },
-  {
-    id: 5,
-    title: "Weather App",
-    description: "A responsive React weather application that fetches real-time weather data using the OpenWeatherMap API. Search any city to view temperature, humidity, wind speed, and current conditions.",
-    image: weatherAppImg,
-    type: "web",
-    techStack: ["React JS", "OpenWeatherMap API", "Responsive UI"],
-    github: "https://github.com/GitSharon3/Weather_App",
-    live: "weather-app-net-demo.netlify.app",
-    category: "Web Application"
-  },
-  {
-    id: 6,
     title: "Aurora Eyewear",
     description: "A full-stack e-commerce web application for an eyeglasses brand featuring product browsing, cart management, checkout flow, and responsive dark/light mode design.",
     image: ecommerceImg,
@@ -75,6 +57,54 @@ export const projects = [
     category: "Web Application"
   },
 
+    {
+    id: 5,
+    title: "Weather App",
+    description: "A responsive React weather application that fetches real-time weather data using the OpenWeatherMap API. Search any city to view temperature, humidity, wind speed, and current conditions.",
+    image: weatherAppImg,
+    type: "web",
+    techStack: ["React JS", "OpenWeatherMap API", "Responsive UI"],
+    github: "https://github.com/GitSharon3/Weather_App",
+    live: "https://weather-app-demo-net.netlify.app",
+    category: "Web Application"
+  },
+
+  {
+    id: 6,
+    title: "ToDo App",
+    description: "A clean, intuitive task management application with features like task categorization, due dates, and progress tracking.",
+    image: todoImg,
+    type: "web",
+    techStack: ["React JS", "LocalStorage", "CSS3"],
+    github: "https://github.com/GitSharon3/TODO_APP",
+    live: "https://todoapp-sharon.netlify.app",
+    category: "Web Application"
+  },
+ 
+  {
+    id: 7,
+    title: "Blog Website",
+    description:"A responsive blog platform where users can read and explore posts with a clean UI design. Built with a focus on simplicity, readability, and structured content layout.",
+    image: myBlogImg,
+    type: "web",
+    techStack: ["React JS", "LocalStorage", "CSS3"],
+    github: "https://github.com/GitSharon3/My_Blog",
+    live: "https://gitsharon3.github.io/My_Blog/",
+    category: "Web Application"
+  },
+ 
+   {
+    id: 8,
+    title: "Biruwa Website",
+    description: "Full-stack e-commerce website for Birwa with user authentication, product management, and payment integration.",
+    image: biruwaWebsiteImg,
+    type: "web",
+    techStack: ["HTML", "CSS", "JavaScript", "PHP", "Laravel", "SQLite"],
+    github: "https://github.com/GitSharon3/Biruwa",
+    live: "#",
+    category: "Web Application"
+  },
+  
   // Mobile Projects
   {
     id: 2,
