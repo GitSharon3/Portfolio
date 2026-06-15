@@ -11,12 +11,15 @@ export const techStack = [
   // Mobile
   { name: "Flutter", category: "Mobile", icon: "flutter", url: "https://flutter.dev/" },
   { name: "Dart", category: "Mobile", icon: "dart", url: "https://dart.dev/" },
+  { name: "React Native", category: "Mobile", icon: "reactnative", url: "https://reactnative.dev/" },
 
   // Backend
   { name: "Django", category: "Backend", icon: "django", url: "https://www.djangoproject.com/" },
   { name: ".NET", category: "Backend", icon: "dotnet", url: "https://dotnet.microsoft.com/" },
-  { name: "C", category: "Languages", icon: "c", url: "https://en.cppreference.com/w/c" },
   { name: "C++", category: "Languages", icon: "cpp", url: "https://en.cppreference.com/w/cpp" },
+  { name: "Node.js", category: "Backend", icon: "nodejs", url: "https://nodejs.org/" },
+  { name: "Express.js", category: "Backend", icon: "express", url: "https://expressjs.com/" },
+  { name: "Python", category: "Languages", icon: "python", url: "https://www.python.org/" },
 
   // Database
   { name: "MongoDB", category: "Database", icon: "mongodb", url: "https://www.mongodb.com/" },
@@ -58,5 +61,4 @@ export const skills = [
   { name: ".NET", level: 75, category: "Backend" },
   { name: "Django", level: 70, category: "Backend" },
   { name: "Python", level: 80, category: "Backend" },
-  { name: "PHP", level: 70, category: "Backend" },
 ];

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Menu, X, Eye, FileDown, Moon, Sun } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import cvPdf from '../assets/Pdf/cv.pdf'
+import cv from '../assets/Pdf/SharonKadariya_Cv.pdf'
 
 // Navigation header with scroll detection and mobile menu
 const Header = () => {
@@ -281,7 +282,7 @@ const Header = () => {
                 {/* Contact info at bottom */}
                 <div className="px-6 pt-4 border-t border-slate-100 dark:border-white/10">
                   <p className="text-sm text-slate-500 dark:text-slate-200/60">
-                    sharonkadariya@gmail.com
+                    sharondotkadariyaa@gmail.com
                   </p>
                 </div>
               </div>
@@ -314,7 +315,7 @@ const Header = () => {
                 <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href={cvPdf}
+                  href={cv}
                   download="Sharon_Kadariya_CV.pdf"
                   className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-medium rounded-lg hover:shadow-lg transition-all duration-300"
                 >
@@ -342,7 +343,7 @@ const Header = () => {
               >
                 {/* PDF Viewer */}
                 <embed
-                  src={cvPdf}
+                  src={cv}
                   type="application/pdf"
                   className="w-full h-full"
                   title="Sharon Kadariya - Resume"
@@ -359,7 +360,7 @@ const Header = () => {
                 <motion.a
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  href={cvPdf}
+                  href={cv}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 px-4 py-3 bg-white border border-slate-300 text-slate-700 rounded-lg hover:border-primary-500 hover:text-primary-600 transition-all duration-300 text-sm font-medium"
@@ -370,7 +371,7 @@ const Header = () => {
                 <motion.a
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  href={cvPdf}
+                  href={cv}
                   download="Sharon_Kadariya_CV.pdf"
                   className="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-lg hover:shadow-lg transition-all duration-300 text-sm font-medium"
                 >

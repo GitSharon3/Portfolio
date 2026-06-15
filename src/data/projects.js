@@ -6,6 +6,7 @@ import weatherAppImg from '../assets/images/weather-app.png'
 import ecommerceImg from '../assets/images/Ecommerce.png'
 import ramroCVImg from '../assets/images/resume-builder.png'
 import myBlogImg from '../assets/images/blog.png'
+import nflixNepalImg from '../assets/images/nflixnepal.png'
 
 // Mobile project media (BiruwaSmart App)
 import biruwaSmartCover from '../assets/images/BiruwaSmart/BiruwaSmart.png'
@@ -44,9 +45,28 @@ export const projects = [
     live: "https://gitsharon3.github.io/RamroCV",
     category: "Web Application"
   },
+   
+  {
+  id: 4,
+  title: "NflixNepal",
+  description:
+    "A high-fidelity Netflix-inspired streaming platform tailored for Nepal, featuring Firebase authentication, real-time movie search, personalized watchlists, cinematic trailers, and genre-based browsing with a modern responsive UI.",
+  image: nflixNepalImg,
+  type: "web",
+  techStack: [
+    "React",
+    "Tailwind CSS",
+    "Firebase",
+    "Sass",
+    "TMDB API"
+  ],
+  github: "https://github.com/GitSharon3/NflixNepal",
+  live: "https://nflixnepal-fa378.web.app",
+  category: "Web Application"
+},
 
    {
-    id: 4,
+    id: 5,
     title: "Aurora Eyewear",
     description: "A full-stack e-commerce web application for an eyeglasses brand featuring product browsing, cart management, checkout flow, and responsive dark/light mode design.",
     image: ecommerceImg,
@@ -58,7 +78,7 @@ export const projects = [
   },
 
     {
-    id: 5,
+    id: 6,
     title: "Weather App",
     description: "A responsive React weather application that fetches real-time weather data using the OpenWeatherMap API. Search any city to view temperature, humidity, wind speed, and current conditions.",
     image: weatherAppImg,
@@ -70,7 +90,7 @@ export const projects = [
   },
 
   {
-    id: 6,
+    id: 7,
     title: "ToDo App",
     description: "A clean, intuitive task management application with features like task categorization, due dates, and progress tracking.",
     image: todoImg,
@@ -82,7 +102,7 @@ export const projects = [
   },
  
   {
-    id: 7,
+    id: 8,
     title: "Blog Website",
     description:"A responsive blog platform where users can read and explore posts with a clean UI design. Built with a focus on simplicity, readability, and structured content layout.",
     image: myBlogImg,
@@ -94,7 +114,7 @@ export const projects = [
   },
  
    {
-    id: 8,
+    id: 9,
     title: "Biruwa Website",
     description: "Full-stack e-commerce website for Birwa with user authentication, product management, and payment integration.",
     image: biruwaWebsiteImg,

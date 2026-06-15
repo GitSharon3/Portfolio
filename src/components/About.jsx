@@ -156,15 +156,15 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 text-center md:text-left leading-tight"
             >
-              I'm Sharon Kadariya, a{" "}
+              Hi ! This is Me {" "}
               <motion.span 
                 className="gradient-text inline-block"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
-                CSIT Student
+                Sharon Kadariya
               </motion.span>{" "}
-              passionate about technology
+              — I build things for the web.
             </motion.h3>
             
             <motion.p 
@@ -173,9 +173,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-slate-600 dark:text-slate-300 mb-4 sm:mb-5 leading-relaxed text-sm sm:text-base text-center md:text-left"
             >
-              Currently pursuing my Bachelor's degree in Computer Science and Information Technology (CSIT). 
-              I'm deeply passionate about full-stack development, artificial intelligence, and mobile app development.
-            </motion.p>
+I am a Full Stack Developer focused on building scalable, high-performance applications using React.js, .NET, and modern backend technologies. I enjoy turning complex problems into clean, user-friendly, and efficient digital solutions.            </motion.p>
             
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -183,9 +181,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-slate-600 dark:text-slate-300 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base text-center md:text-left"
             >
-              My journey includes valuable internship experience at EXOTRAC LLC where I developed a Yard Management System 
-              using React JS and .NET. I enjoy creating innovative solutions that solve real-world problems.
-            </motion.p>
+My journey includes experience working on production systems at EXOTRAC LLC, where I developed a Yard Management System using React.js, .NET, and RESTful APIs. I have also built mobile applications, including an AI-based project, which strengthened my understanding of cross-platform development and real-world product building. I thrive in collaborative Agile environments and enjoy creating solutions that deliver real impact.            </motion.p>
 
             {/* Achievement cards grid with staggered animation */}
             <motion.div 
