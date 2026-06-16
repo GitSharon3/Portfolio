@@ -6,7 +6,7 @@ import weatherAppImg from '../assets/images/weather-app.png'
 import ecommerceImg from '../assets/images/Ecommerce.png'
 import ramroCVImg from '../assets/images/resume-builder.png'
 import myBlogImg from '../assets/images/blog.png'
-import nflixNepalImg from '../assets/images/NflixNepal.png'
+import nflixNepalImg from '../assets/images/nflixNepal.png'
 
 // Mobile project media (BiruwaSmart App)
 import biruwaSmartCover from '../assets/images/BiruwaSmart/BiruwaSmart.png'
