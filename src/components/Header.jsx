@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Menu, X, Eye, FileDown, Moon, Sun } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import cvPdf from '../assets/Pdf/cv.pdf'
-import cv from '../assets/Pdf/SharonKadariya_Cv.pdf'
+import cv from '../assets/Pdf/SharonKadariya_CV.pdf'
 
 // Navigation header with scroll detection and mobile menu
 const Header = () => {
